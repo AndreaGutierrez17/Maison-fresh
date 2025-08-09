@@ -710,3 +710,72 @@ body .eligibility-intro {
   transform: scale(0.95);
   box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
 }
+
+/* Mobile: que el pergamino cubra y no quede chico */
+@media (max-width: 768px){
+  .init-form, .parchment, .scroll-bg{
+    background-size: cover;        /* llena el ancho */
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 18px;
+  }
+
+  /* el contenedor no se achique por un max-width de desktop */
+  .init-wrapper{
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 20px 14px;
+  }
+}
+
+/* Si usas <img> del pergamino */
+.scroll-bg img, .parchment img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+
+/* Botón estilo sello-dorado, igual al de los rite-cards */
+.btn-rite {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid var(--gold, #d4b253);
+  border-radius: 12px;
+  letter-spacing: .06em;
+  font-family: inherit;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--gold, #d4b253);
+  background: transparent;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease;
+}
+
+.btn-rite:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(212,178,83,.15);
+  background: rgba(212,178,83,.08);
+}
+
+.btn-rite:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(212,178,83,.12);
+}
+
+/* Asegura que el header quede encima */
+.site-header, .nav, .navbar {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Capas decorativas que no deben capturar clics */
+.scroll-bg, .parchment, .rite-bg, .decor-layer {
+  pointer-events: none;      /* solo si son decorativas */
+}
+
+/* Inputs y botones sí deben recibir clics */
+.init-form * {
+  pointer-events: auto;
+}
