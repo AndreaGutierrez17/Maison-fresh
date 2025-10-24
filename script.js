@@ -86,3 +86,23 @@ function startCountdown(){
 document.getElementById('year').textContent = new Date().getFullYear();
 
 startCountdown();
+
+// ====== Mobile Menu Toggle ======
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+
+// Abrir/cerrar menú
+navToggle?.addEventListener('click', () => {
+  const isOpen = navToggle.classList.toggle('active');
+  mainNav.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+
+// Cerrar al hacer clic en un enlace
+mainNav?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    mainNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
